@@ -1,3 +1,4 @@
-import Banner from "./banner/banner.jsx";
+import Banner from "./banner.jsx";
+import Button from "./button.jsx";
 
-export { Banner };
+export { Banner, Button };

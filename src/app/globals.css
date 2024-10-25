@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #cfeb7c;
   --apricot: #f6993a;
   --sunny: #f6ea4a;
   --emerald: #22aa48;
@@ -15,14 +14,12 @@
   --crimson: #f599da;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }

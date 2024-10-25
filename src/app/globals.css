@@ -5,12 +5,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --apricot: #f6993a;
+  --sunny: #f6ea4a;
+  --emerald: #22aa48;
+  --mint: #6bc762;
+  --soft: #acedb3;
+  --turquoise: #65eccc;
+  --lavender: #fac7f0;
+  --crimson: #f599da;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    
   }
 }
 

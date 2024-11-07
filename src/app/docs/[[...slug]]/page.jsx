@@ -13,7 +13,7 @@ import { Mdx } from "@/components/ui/mdx-components";
 // import { OpenInV0Cta } from "@/components/open-in-v0-cta";
 import { DocsPager } from "@/components/ui/pager";
 // import { DashboardTableOfContents } from "@/components/toc";
-import { badgeVariants } from "@/registry/new-york/ui/badge";
+import { badgeVariants } from "@/components/ui/badge";
 
 // interface DocPageProps {
 //   params: {

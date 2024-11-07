@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { docsConfig } from "@/config/docs";
-import { Button } from "@/registry/new-york/ui/button";
+import { Button } from "@/components/ui/button";
 
 export function DocsPager({ doc }) {
   const pager = getPagerForDoc(doc);

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
-export function DocsSidebarNav({ config }) {
+export function DocsSidebarNav({ config = { sidebarNav: [] } }) {
   const pathname = usePathname();
 
   const items = pathname?.startsWith("/charts")

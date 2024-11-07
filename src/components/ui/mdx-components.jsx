@@ -222,10 +222,10 @@ const components = {
     />
   ),
   Image,
-  Callout,
-  ComponentPreview,
-  ComponentExample,
-  ComponentSource,
+  // Callout,
+  // ComponentPreview,
+  // ComponentExample,
+  // ComponentSource,
   AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
@@ -296,9 +296,9 @@ const components = {
 };
 
 export function Mdx({ code }) {
-  const [config] = useConfig();
+  // const [config] = useConfig();
   const Component = useMDXComponent(code, {
-    style: config.style,
+    // style: config.style,
   });
 
   return (

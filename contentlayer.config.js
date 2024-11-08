@@ -5,7 +5,7 @@ import {
   makeSource,
 } from "contentlayer2/source-files";
 // import rehypeAutolinkHeadings from "rehype-autolink-headings";
-// import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
 // import rehypeSlug from "rehype-slug";
 // import { codeImport } from "remark-code-import";
 // import remarkGfm from "remark-gfm";
@@ -83,6 +83,13 @@ export default makeSource({
   documentTypes: [Doc],
   mdx: {
     remarkPlugins: [],
-    rehypePlugins: [],
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: "one-dark-pro",
+        },
+      ],
+    ],
   },
 });

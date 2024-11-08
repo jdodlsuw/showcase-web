@@ -9,29 +9,29 @@ component: true
 
 ## Usage
 
-```tsx
+```jsx
 import { Button } from "@/components/ui/button"
 ```
 
-```tsx
+```jsx
 <Button variant="outline">Button</Button>
 ```
 
 ## Link
 
-You can use the `buttonVariants` helper to create a link that looks like a button.
+Bạn có thể dùng `buttonVariants` để tạo 1 Link trông giống button.
 
-```tsx
+```jsx
 import { buttonVariants } from "@/components/ui/button"
 ```
 
-```tsx
+```jsx
 <Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
 ```
 
-Alternatively, you can set the `asChild` parameter and nest the link component.
+Ngoài ra, bạn có thể đặt tham số `asChild` và lồng thành phần liên kết.
 
-```tsx
+```jsx
 <Button asChild>
   <Link href="/login">Login</Link>
 </Button>

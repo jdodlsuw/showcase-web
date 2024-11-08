@@ -18,4 +18,20 @@ export const Index = {
     subcategory: "",
     chunks: [],
   },
+  "button-demo": {
+      name: "button-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button"],
+      files: [{
+        path: "components/example/button-demo.jsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/components/example/button-demo.jsx")),
+      source: "",
+      category: "",
+      subcategory: "",
+      chunks: []
+    },
 };

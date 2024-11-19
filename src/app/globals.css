@@ -3,15 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --background: #cfeb7c;
-  --apricot: #f6993a;
-  --sunny: #f6ea4a;
-  --emerald: #22aa48;
-  --mint: #6bc762;
-  --soft: #acedb3;
-  --turquoise: #65eccc;
-  --lavender: #fac7f0;
-  --crimson: #f599da;
 }
 
 body {
@@ -31,6 +22,8 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
+    --background: #0e100f;
+    --foreground: #fffce1;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -42,6 +35,10 @@ body {
   }
 }
 
-body { 
-  cursor: url('/cursor.svg'), auto;
+body {
+  cursor: url("/cursor.svg"), auto;
+}
+
+svg {
+  color: var(--foreground);
 }

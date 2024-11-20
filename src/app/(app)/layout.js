@@ -7,9 +7,9 @@ export default function AppLayout({ children }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="flex-1 flex-col">
         <AppHeader />
-        <main className="flex-1 px-4">{children}</main>
+        <main className="flex-1 px-4"></main>
         <SiteFooter />
       </main>
     </SidebarProvider>

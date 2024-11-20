@@ -8,78 +8,88 @@ import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 // import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/components/ui/button";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-
-function useMetaColor() {
-  return {
-    setMetaColor() {},
-    metaColor: {},
-  };
-}
+import { Menu } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
-  const { setMetaColor, metaColor } = useMetaColor();
-
-  const onOpenChange = React.useCallback(
-    (open) => {
-      setOpen(open);
-      setMetaColor(open ? "#09090b" : metaColor);
+  const navRef = useRef(null);
+  const tl = useRef();
+  const { contextSafe } = useGSAP(
+    () => {
+      tl.current = gsap
+        .timeline({ paused: true })
+        .to(
+          "nav > div:first-child",
+          {
+            x: 0,
+            ease: "power2.in",
+          },
+          0
+        )
+        .to("nav > div:last-child", { x: 0, ease: "power2.in" }, 0)
+        .to(
+          "button",
+          {
+            borderColor: "#000000",
+            color: "#000000",
+          },
+          0
+        )
+        .to(
+          "svg",
+          {
+            color: "#000000",
+          },
+          0
+        )
+        .to("svg > line:nth-child(1)", { opacity: 0, x: "-100%" }, 0)
+        .to(
+          "svg > line:nth-child(2)",
+          {
+            rotate: 45,
+            transformOrigin: "left",
+          },
+          0
+        )
+        .to(
+          "svg > line:nth-child(3)",
+          {
+            rotate: -45,
+            transformOrigin: "left",
+          },
+          0
+        );
     },
-    [setMetaColor, metaColor]
+    { scope: navRef }
   );
 
+  const toggle = contextSafe(() => {
+    if (open) {
+      tl.current.reverse();
+    } else {
+      tl.current.play();
+    }
+
+    setOpen(!open);
+  });
+
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerTrigger asChild></DrawerTrigger>
-      <DrawerContent className="max-h-[60svh] p-0">
-        <div className="overflow-auto p-6">
-          <div className="flex flex-col space-y-3">
-            {docsConfig.mainNav?.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                )
-            )}
-          </div>
-          <div className="flex flex-col space-y-2">
-            {docsConfig.sidebarNav.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
-                {item?.items?.length &&
-                  item.items.map((item) => (
-                    <React.Fragment key={item.href}>
-                      {!item.disabled &&
-                        (item.href ? (
-                          <MobileLink
-                            href={item.href}
-                            onOpenChange={setOpen}
-                            className="text-muted-foreground"
-                          >
-                            {item.title}
-                            {item.label && (
-                              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                                {item.label}
-                              </span>
-                            )}
-                          </MobileLink>
-                        ) : (
-                          item.title
-                        ))}
-                    </React.Fragment>
-                  ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </DrawerContent>
-    </Drawer>
+    <div ref={navRef}>
+      <nav className="flex flex-col fixed inset-0">
+        <div
+          className="flex-1 bg-[#fffce1]"
+          style={{ transform: "translateX(-100%)" }}
+        ></div>
+        <div className="h-36" style={{ transform: "translateX(100%)" }}></div>
+      </nav>
+      <button onClick={toggle} className={cn("flex border-2 rounded-full px-4 py-1 gap-2 border-foreground relative z-1")} variant="outline">
+        <span>Menu</span>
+        <Menu />
+      </button>
+    </div>
   );
 }
 

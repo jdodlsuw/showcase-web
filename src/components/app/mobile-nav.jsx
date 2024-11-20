@@ -80,9 +80,13 @@ export function MobileNav() {
     <div ref={navRef}>
       <nav className="flex flex-col fixed inset-0">
         <div
-          className="flex-1 bg-[#fffce1]"
+          className="flex-1 bg-[#fffce1] pt-24"
           style={{ transform: "translateX(-100%)" }}
-        ></div>
+        >
+          <ul>
+            <li><button className="text-lg">Docs</button></li>
+          </ul>
+        </div>
         <div className="h-36" style={{ transform: "translateX(100%)" }}></div>
       </nav>
       <button onClick={toggle} className={cn("flex border-2 rounded-full px-4 py-1 gap-2 border-foreground relative z-1")} variant="outline">

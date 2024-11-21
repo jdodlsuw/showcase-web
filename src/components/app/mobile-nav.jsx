@@ -9,19 +9,28 @@ import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 // import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, Plus, Minus } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useHeader } from "./header";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export function MobileNav() {
   const { open, setOpen } = useHeader();
   const navRef = useRef(null);
   const tl = useRef();
+  const accordionTl = useRef();
   const { contextSafe } = useGSAP(
     () => {
       tl.current = gsap
         .timeline({ paused: true })
+        .to("nav", { visibility: "visible" })
         .to(
           "nav > div:first-child",
           {
@@ -63,6 +72,10 @@ export function MobileNav() {
           },
           0
         );
+
+      accordionTl.current = gsap
+        .timeline({ paused: true })
+        .to("svg > path:last-child", { opacity: 0 });
     },
     { scope: navRef }
   );
@@ -77,23 +90,58 @@ export function MobileNav() {
     setOpen(!open);
   });
 
+  const toggleAccordion = contextSafe((item) => {
+    if (item) {
+      accordionTl.current.play();
+    } else {
+      accordionTl.current.reverse();
+    }
+  });
+
   return (
     <div ref={navRef}>
-      <nav className="flex flex-col fixed inset-0">
+      <nav
+        className="flex flex-col fixed inset-0"
+        style={{ visibility: "hidden" }}
+      >
         <div
           className="flex-1 bg-[#fffce1] pt-28 px-4 rounded-xl"
           style={{ transform: "translateX(-100%)" }}
         >
           <ul className="text-xl font-semibold px-4 text-background flex flex-col gap-2">
-            {docsConfig.mobileNav.map(({ title, href }, index) => (
-              <li key={index} onClick={toggle}>
-                <Link href={href}>{title}</Link>
-              </li>
+            {docsConfig.mobileNav.map(({ title, href, items }, i) => (
+              <>
+                {!items?.length ? (
+                  <li key={i} onClick={toggle}>
+                    <Link href={href}>{title}</Link>
+                  </li>
+                ) : (
+                  <Accordion
+                    type="single"
+                    collapsible
+                    onValueChange={toggleAccordion}
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <span>{title}</span>
+                        <Plus />
+                      </AccordionTrigger>
+                      <AccordionContent className="pl-4 pt-2">
+                        {items.map((item, ii) => (
+                          <li key={ii} onClick={toggle}>
+                            <Link href={item.href}>{item.title}</Link>
+                          </li>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                )}
+              </>
             ))}
           </ul>
         </div>
         <div
-          className="p-4 h-36 border border-foreground rounded-xl relative"
+          className="bg-background p-4 h-36 border border-foreground rounded-xl relative"
           style={{ transform: "translateX(100%)" }}
         >
           <ul className="text-foreground font-semibold">

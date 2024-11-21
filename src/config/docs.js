@@ -15,8 +15,14 @@ export const docsConfig = {
       href: "/docs",
     },
     {
-      title: "Chat GPT",
-      href: "/chat-gpt",
+      title: "Tools",
+      href: "/tools",
+      items: [
+        {
+          title: "Chat GPT",
+          href: "/chat-gpt",
+        },
+      ],
     },
   ],
   sidebarNav: [

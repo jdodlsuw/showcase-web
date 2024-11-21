@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { docsConfig } from "@/config/docs";
@@ -80,7 +81,7 @@ export function MobileNav() {
     <div ref={navRef}>
       <nav className="flex flex-col fixed inset-0">
         <div
-          className="flex-1 bg-[#fffce1] pt-24 px-4 rounded-xl"
+          className="flex-1 bg-[#fffce1] pt-28 px-4 rounded-xl"
           style={{ transform: "translateX(-100%)" }}
         >
           <ul className="text-xl font-semibold px-4">
@@ -90,7 +91,7 @@ export function MobileNav() {
           </ul>
         </div>
         <div
-          className="p-4 h-36 border border-foreground rounded-xl"
+          className="p-4 h-36 border border-foreground rounded-xl relative"
           style={{ transform: "translateX(100%)" }}
         >
           <ul className="text-foreground font-semibold">
@@ -104,6 +105,9 @@ export function MobileNav() {
               <Link href="https://instagram.com">Instagram</Link>
             </li>
           </ul>
+          <div className="absolute right-8 bottom-0 w-36 h-full t-2/5">
+            <Image fill src="/cat.gif" alt="" />
+          </div>
         </div>
       </nav>
       <button

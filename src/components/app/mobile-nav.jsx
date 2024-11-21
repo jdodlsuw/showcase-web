@@ -80,16 +80,39 @@ export function MobileNav() {
     <div ref={navRef}>
       <nav className="flex flex-col fixed inset-0">
         <div
-          className="flex-1 bg-[#fffce1] pt-24"
+          className="flex-1 bg-[#fffce1] pt-24 px-4 rounded-xl"
           style={{ transform: "translateX(-100%)" }}
         >
-          <ul>
-            <li><button className="text-lg">Docs</button></li>
+          <ul className="text-xl font-semibold px-4">
+            <li>
+              <button className="">Docs</button>
+            </li>
           </ul>
         </div>
-        <div className="h-36" style={{ transform: "translateX(100%)" }}></div>
+        <div
+          className="p-4 h-36 border border-foreground rounded-xl"
+          style={{ transform: "translateX(100%)" }}
+        >
+          <ul className="text-foreground font-semibold">
+            <li>
+              <Link href="https://github.com/jdodlsuw">Github</Link>
+            </li>
+            <li>
+              <Link href="https://facebook.com">Facebook</Link>
+            </li>
+            <li>
+              <Link href="https://instagram.com">Instagram</Link>
+            </li>
+          </ul>
+        </div>
       </nav>
-      <button onClick={toggle} className={cn("flex border-2 rounded-full px-4 py-1 gap-2 border-foreground relative z-1")} variant="outline">
+      <button
+        onClick={toggle}
+        className={cn(
+          "flex border-2 rounded-full px-4 py-1 gap-2 border-foreground relative z-1"
+        )}
+        variant="outline"
+      >
         <span>Menu</span>
         <Menu />
       </button>

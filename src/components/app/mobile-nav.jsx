@@ -86,7 +86,7 @@ export function MobileNav() {
         >
           <ul className="text-xl font-semibold px-4 text-background flex flex-col gap-2">
             {docsConfig.mobileNav.map(({ title, href }, index) => (
-              <li key={index}>
+              <li key={index} onClick={toggle}>
                 <Link href={href}>{title}</Link>
               </li>
             ))}

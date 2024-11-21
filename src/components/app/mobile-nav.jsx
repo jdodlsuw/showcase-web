@@ -13,9 +13,9 @@ import { Menu } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import { useHeader } from "./header";
 export function MobileNav() {
-  const [open, setOpen] = React.useState(false);
+  const { open, setOpen } = useHeader();
   const navRef = useRef(null);
   const tl = useRef();
   const { contextSafe } = useGSAP(
@@ -84,10 +84,12 @@ export function MobileNav() {
           className="flex-1 bg-[#fffce1] pt-28 px-4 rounded-xl"
           style={{ transform: "translateX(-100%)" }}
         >
-          <ul className="text-xl font-semibold px-4">
-            <li>
-              <button className="">Docs</button>
-            </li>
+          <ul className="text-xl font-semibold px-4 text-background flex flex-col gap-2">
+            {docsConfig.mobileNav.map(({ title, href }, index) => (
+              <li key={index}>
+                <Link href={href}>{title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div

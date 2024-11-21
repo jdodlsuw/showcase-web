@@ -1,36 +1,22 @@
 export const docsConfig = {
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: "Documentation",
+      href: "/docs",
     },
+    {
+      title: "Chat GPT",
+      href: "/chat-gpt",
+    },
+  ],
+  mobileNav: [
     {
       title: "Documentation",
       href: "/docs",
     },
     {
-      title: "Components",
-      href: "/docs/components/accordion",
-    },
-    {
-      title: "Blocks",
-      href: "/blocks",
-    },
-    {
-      title: "Charts",
-      href: "/charts",
-    },
-    {
-      title: "Themes",
-      href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
-    },
-    {
-      title: "Colors",
-      href: "/colors",
+      title: "Chat GPT",
+      href: "/chat-gpt",
     },
   ],
   sidebarNav: [

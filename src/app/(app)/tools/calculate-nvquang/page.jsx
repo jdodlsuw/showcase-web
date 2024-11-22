@@ -19,7 +19,10 @@ export default function CalculateNVQUANGPage({ params }) {
   const { toast, dismiss } = useToast();
 
   const addRow = () => {
-    setRows([...rows, { id: rows[rows.length - 1].id + 1, value: "" }]);
+    setRows([
+      ...rows,
+      { id: rows.length > 0 ? rows[rows.length - 1].id + 1 : 1, value: "" },
+    ]);
   };
 
   const updateRow = (id, field, newValue) => {

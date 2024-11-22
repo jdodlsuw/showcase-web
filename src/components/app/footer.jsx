@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import { Play, SkipBack, SkipForward, Pause } from "lucide-react";
 import { useRef, useState } from "react";
-export function SiteFooter() {
+export function AppFooter() {
   const audioRef = useRef();
   const [isPlay, setIsPlay] = useState(false);
   const playMusic = () => {

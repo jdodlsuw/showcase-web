@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         className={cn(
           geistSans.variable,
           geistMono.variable,
-          "antialiased min-h-screen dark bg-background text-foreground"
+          "antialiased dark bg-background text-foreground"
         )}
       >
         {children}

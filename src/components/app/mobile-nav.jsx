@@ -20,6 +20,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { siteConfig } from "@/config/site";
 
 export function MobileNav() {
   const { open, setOpen } = useHeader();
@@ -146,13 +147,13 @@ export function MobileNav() {
         >
           <ul className="text-foreground font-semibold">
             <li>
-              <Link href="https://github.com/jdodlsuw">Github</Link>
+              <Link href={siteConfig.links.github}>Github</Link>
             </li>
             <li>
-              <Link href="https://facebook.com">Facebook</Link>
+              <Link href={siteConfig.links.facebook}>Facebook</Link>
             </li>
             <li>
-              <Link href="https://instagram.com">Instagram</Link>
+              <Link href={siteConfig.links.instagram}>Instagram</Link>
             </li>
           </ul>
           <div className="absolute right-8 bottom-0 w-36 h-full t-2/5">

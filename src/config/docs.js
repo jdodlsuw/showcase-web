@@ -20,7 +20,11 @@ export const docsConfig = {
       items: [
         {
           title: "Chat GPT",
-          href: "/chat-gpt",
+          href: "/tools/chat-gpt",
+        },
+        {
+          title: "Calculate NVQUANG",
+          href: "/tools/calculate-nvquang",
         },
       ],
     },

@@ -118,6 +118,7 @@ export function MobileNav() {
                   </li>
                 ) : (
                   <Accordion
+                    key={i}
                     type="single"
                     collapsible
                     onValueChange={toggleAccordion}

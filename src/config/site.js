@@ -14,3 +14,10 @@ export const META_THEME_COLORS = {
   light: "#ffffff",
   dark: "#09090b",
 };
+
+export const API_CONFIG = {
+  BASE_URL: process.env.NEXT_PUBLIC_API_URL,
+  ENDPOINTS: {
+    SONGS: "/songs",
+  },
+};

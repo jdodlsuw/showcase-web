@@ -15,6 +15,10 @@ export const docsConfig = {
       href: "/docs",
     },
     {
+      title: "Playlist",
+      href: "/playlist",
+    },
+    {
       title: "Tools",
       href: "/tools",
       items: [

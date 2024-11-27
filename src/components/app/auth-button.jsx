@@ -7,19 +7,23 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
+import { Icons } from "@/components/ui/icons";
+import { Button } from "@/components/ui/button";
 export default function AuthButtons() {
   const { data: session } = useSession();
 
   if (!session) {
     return (
-      <button onClick={() => signIn("google")}>Đăng nhập với Google</button>
+      <div className="text-background">
+        <Button onClick={() => signIn("google")} variant="outline-dark">
+          <Icons.google className="w-6 h-6" />
+        </Button>
+      </div>
     );
   }
 
   return (
     <div>
-      {/* <p>Xin chào, {session.user?.name}</p> */}
       <Popover>
         <PopoverTrigger>
           <Avatar>
@@ -27,9 +31,11 @@ export default function AuthButtons() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </PopoverTrigger>
-        <PopoverContent>Place content for the popover here.</PopoverContent>
+        <PopoverContent>
+          <p>Xin chào, {session.user?.name}</p>
+          <button onClick={() => signOut()}>Đăng xuất</button>
+        </PopoverContent>
       </Popover>
-      {/* <button onClick={() => signOut()}>Đăng xuất</button> */}
     </div>
   );
 }

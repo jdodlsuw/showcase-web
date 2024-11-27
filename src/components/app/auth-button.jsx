@@ -32,8 +32,8 @@ export default function AuthButtons() {
           </Avatar>
         </PopoverTrigger>
         <PopoverContent>
-          <p>Xin chào, {session.user?.name}</p>
-          <button onClick={() => signOut()}>Đăng xuất</button>
+          <p>{session.user?.name}</p>
+          <button onClick={() => signOut()}>Logout</button>
         </PopoverContent>
       </Popover>
     </div>

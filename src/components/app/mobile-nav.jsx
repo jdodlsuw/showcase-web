@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { siteConfig } from "@/config/site";
+import AuthButtons from "@/components/app/auth-button";
 
 export function MobileNav() {
   const { open, setOpen } = useHeader();
@@ -106,10 +107,10 @@ export function MobileNav() {
         style={{ visibility: "hidden" }}
       >
         <div
-          className="flex-1 bg-[#fffce1] pt-28 px-4 rounded-xl"
+          className="flex-1 bg-[#fffce1] pt-28 px-8 rounded-xl flex"
           style={{ transform: "translateX(-100%)" }}
         >
-          <ul className="text-xl font-semibold px-4 text-background flex flex-col gap-2">
+          <ul className="flex-1 text-xl font-semibold  text-background flex flex-col gap-2">
             {docsConfig.mobileNav.map(({ title, href, items }, i) => (
               <>
                 {!items?.length ? (
@@ -141,6 +142,7 @@ export function MobileNav() {
               </>
             ))}
           </ul>
+          <AuthButtons />
         </div>
         <div
           className="bg-background p-4 h-36 border border-foreground rounded-xl relative"

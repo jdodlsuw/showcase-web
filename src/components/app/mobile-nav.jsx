@@ -21,8 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { siteConfig } from "@/config/site";
-import AuthButtons from "@/components/app/auth-button";
-
+import AuthButton from "@/components/app/auth-button";
 export function MobileNav() {
   const { data: session } = useSession();
   const { open, setOpen } = useHeader();
@@ -163,7 +162,9 @@ export function MobileNav() {
             {session ? (
               <span>
                 <span>Hello, {session.user?.name}.</span>
-                <span className="ml-1" onClick={signOut}>Sign out</span>
+                <span className="ml-1" onClick={signOut}>
+                  Sign out
+                </span>
               </span>
             ) : (
               <span onClick={() => handleClickCreateAccount(true)} className="">
@@ -173,14 +174,19 @@ export function MobileNav() {
 
             <section
               className="absolute inset-0 bg-[#fffce1]"
-              style={{ transform: "translateX(100%)", visibility: "hidden" }}
+              style={{
+                transform: "translateX(calc(100% + 24px))",
+                visibility: "hidden",
+              }}
             >
               <ArrowLeft
                 color="black"
                 className="w-6 h-6"
                 onClick={() => handleClickCreateAccount(false)}
               />
-              <AuthButtons />
+              <div className="pt-4">
+                <AuthButton className="w-full" />
+              </div>
             </section>
           </div>
         </section>

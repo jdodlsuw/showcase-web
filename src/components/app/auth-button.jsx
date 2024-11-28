@@ -9,33 +9,34 @@ import {
 } from "@/components/ui/popover";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
-export default function AuthButtons() {
+export default function AuthButton({ props }) {
   const { data: session } = useSession();
 
   if (!session) {
     return (
-      <div className="text-background">
-        <Button onClick={() => signIn("google")} variant="outline-dark">
-          <Icons.google className="w-6 h-6" />
-        </Button>
-      </div>
+      <Button
+        {...props}
+        className="w-full"
+        onClick={() => signIn("google")}
+        variant="outline-dark"
+      >
+        <Icons.google className="w-6 h-6" />
+      </Button>
     );
   }
 
   return (
-    <div>
-      <Popover>
-        <PopoverTrigger>
-          <Avatar>
-            <AvatarImage src={session.user?.image} />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </PopoverTrigger>
-        <PopoverContent>
-          <p>{session.user?.name}</p>
-          <button onClick={() => signOut()}>Logout</button>
-        </PopoverContent>
-      </Popover>
-    </div>
+    <Popover>
+      <PopoverTrigger>
+        <Avatar>
+          <AvatarImage src={session.user?.image} />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </PopoverTrigger>
+      <PopoverContent>
+        <p>{session.user?.name}</p>
+        <button onClick={() => signOut()}>Logout</button>
+      </PopoverContent>
+    </Popover>
   );
 }
